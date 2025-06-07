@@ -1,121 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Dx4's Biography</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
-      color: #f0f0f0;
-      margin: 0;
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 1rem;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      backdrop-filter: blur(10px);
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-      font-weight: 800;
-      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-
-    h2 {
-      font-size: 1.2rem;
-      font-weight: 400;
-      margin-top: 0;
-      color: #ccc;
-    }
-
-    p {
-      line-height: 1.6;
-      margin: 1rem 0;
-    }
-
-    .tag {
-      display: inline-block;
-      background: #00d2ff33;
-      color: #00d2ff;
-      padding: 0.3rem 0.7rem;
-      border-radius: 0.5rem;
-      margin: 0.2rem;
-      font-size: 0.85rem;
-    }
-    
-    a {
-	  color: #00d2ff;
-	  text-decoration: none;
-	  font-weight: 600;
-	  transition: all 0.3s ease;
-	}
-	
-	a:hover {
-	  text-decoration: underline;
-	  color: #66f0ff;
-	}
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dx4Grey | Linux Journey</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <h1>Direct Xploit 4 Alphabet</h1>
-    <h2>aka Dx4 — Developer, Hacker, Dreamer</h2>
-    <p>I'm a tech enthusiast from Indonesian and a fresh high school graduate with a big passion for system-level tweaking and ethical hacking. From WiFi injection and Bluetooth jamming to kernel building and Linux driver patching — I do it all with heart.</p>
-    <p>I’ve built tools like <strong>AirHack</strong> (wireless hacking app for Android) and even created a sleek <a href="./photo-compressor">photo compressor</a> web app. I’ve also worked with ESP32 for Bluetooth jammers and low-level hacking experiments.</p>
-    <p>My dream? Study Mechatronics at Polman, keep building powerful tech, and marry Farah — the one who keeps me grounded.</p>
-
-    <div>
-	  <span class="tag">Android Root</span>
-	  <span class="tag">NetHunter</span>
-	  <span class="tag">Linux Kernel</span>
-	  <span class="tag">Driver Hacking</span>
-	  <span class="tag">ESP32</span>
-	  <span class="tag">Web Dev</span>
-	  <span class="tag">BLE Jammer</span>
-	  <span class="tag">Polman Mechatronics</span>
-	  <span class="tag">Custom ROM</span>
-	  <span class="tag">Clang Toolchain</span>
-	  <span class="tag">Open Source</span>
-	  <span class="tag">JavaScript Tools</span>
-	  <span class="tag">Security Research</span>
-	  <span class="tag">Microcontroller</span>
-	  <span class="tag">Terminal Emulator</span>
-	  <span class="tag">NDK Dev</span>
-	  <span class="tag">Embedded Systems</span>
-	  <span class="tag">Wireless Hacking</span>
-	  <span class="tag">Reverse Engineering</span>
-	  <span class="tag">Network Tools</span>
-	  <span class="tag">Audio Tools</span>
-	  <span class="tag">Compression</span>
-	  <span class="tag">GIF Maker</span>
-	  <span class="tag">No Spam</span>
-	  <span class="tag">Cybersecurity</span>
-	  <span class="tag">Experimental</span>
-	  <span class="tag">DX4Grey Project</span>
-	  <span class="tag">AirHack</span>
-	  <span class="tag">WCN3990</span>
-	  <span class="tag">Packet Injection</span>
+  <header>
+    <h1>Dx4Grey</h1>
+    <p>From Termux to Kernel Level | Open-Source Hacker</p>
+  </header>  <section>
+    <h2>👨‍💻 About Me</h2>
+    <p>At first I was just a curious kid who played Termux non-root on Android, but now I've plunged into the world of Linux kernel. I learned from scratch, from the Android emulator to run Termux, until finally</p>
+    
+    <h2>🛠️ Featured Projects</h2>
+	
+	<div class="project">
+	  <h3><a href="https://github.com/DX4GREY/kernel_xiaomi_sdm845" target="_blank">kernel_xiaomi_sdm845</a></h3>
+	  <p>My own modified kernel for Xiaomi Pocophone F1, has been patched and is ready for further exploration at the hardware level.</p>
 	</div>
-  </div>
+	
+	<div class="project">
+	  <h3><a href="https://github.com/DX4GREY/AirHack-Project" target="_blank">AirHack-Project</a></h3>
+	  <p>An Android App-based wireless pentest tool, which I developed based on mdk4 to help test WiFi and automate attacks.</p>
+	</div>
+	
+	<div class="project">
+	  <h3><a href="https://github.com/DX4GREY/esp8266_wifitools" target="_blank">esp8266_wifitools</a></h3>
+	  <p>A series of hardware & script tools for ESP8266 that can be used for network testing and wireless experiments.</p>
+	</div>
+	
+	<h2>🌐 Contact & Social Media</h2>
+	<ul>
+	  <li>GitHub: <a href="https://github.com/DX4GREY" target="_blank">@DX4GREY</a></li>
+	</ul>
+  </section>  <footer>
+    <p>© 2025 Dx4Grey. Built with love & Linux.</p>
+  </footer>
 </body>
 </html>
