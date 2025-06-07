@@ -1,0 +1,61 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0d1117;
+  color: #c9d1d9;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #161b22;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #58a6ff;
+  font-family: 'Fira Code', monospace;
+}
+
+header p {
+  color: #8b949e;
+}
+
+section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+h2 {
+  color: #58a6ff;
+  border-bottom: 1px solid #30363d;
+  padding-bottom: 0.5rem;
+}
+
+.project {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid #30363d;
+  border-radius: 0.5rem;
+  background-color: #161b22;
+}
+
+.project a {
+  color: #79c0ff;
+  text-decoration: none;
+}
+
+.project a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #161b22;
+  color: #8b949e;
+}
