@@ -4,6 +4,10 @@
     "title": "DX4GREY — Developer Portfolio",
     "description": "DX4GREY — Backend Developer, System Tweaking, Linux, Security Research, and Embedded Systems."
   },
+  "intro": {
+    "words": ["hello", "hola", "bonjour", "こんにちは", "안녕하세요", "привет", "สวัสดี"],
+    "duration": 2700
+  },
   "nav": {
     "menuLabel": "MENU / NAVIGATION",
     "open": "Open menu",

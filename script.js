@@ -6,7 +6,73 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const closeButton = document.querySelector('.drawer-close');
   const backdrop = document.querySelector('.drawer-backdrop');
+  const introScreen = document.querySelector('[data-intro]');
+  const introWord = document.querySelector('[data-intro-word]');
+  const scrollTrack = document.querySelector('[data-custom-scrollbar]');
+  const scrollThumb = document.querySelector('[data-scroll-thumb]');
   let uiContent = null;
+
+  const updateScrollbar = () => {
+    if (!scrollTrack || !scrollThumb) return;
+    const viewportHeight = window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+    const trackHeight = scrollTrack.clientHeight;
+    const scrollable = pageHeight - viewportHeight;
+    if (scrollable <= 0 || trackHeight <= 0) {
+      scrollTrack.hidden = true;
+      return;
+    }
+    scrollTrack.hidden = false;
+    const thumbHeight = Math.max(38, (viewportHeight / pageHeight) * trackHeight);
+    const maxTop = trackHeight - thumbHeight;
+    scrollThumb.style.height = `${thumbHeight}px`;
+    scrollThumb.style.transform = `translateY(${(window.scrollY / scrollable) * maxTop}px)`;
+  };
+
+  let scrollbarFrame = 0;
+  const requestScrollbarUpdate = () => {
+    if (!scrollbarFrame) scrollbarFrame = requestAnimationFrame(() => {
+      updateScrollbar();
+      scrollbarFrame = 0;
+    });
+  };
+  window.addEventListener('scroll', requestScrollbarUpdate, { passive: true });
+  window.addEventListener('resize', requestScrollbarUpdate, { passive: true });
+  window.addEventListener('load', requestScrollbarUpdate, { once: true });
+  requestScrollbarUpdate();
+
+  if (scrollTrack && scrollThumb) {
+    let dragging = false;
+    let dragOffset = 0;
+    scrollThumb.addEventListener('pointerdown', event => {
+      dragging = true;
+      dragOffset = event.clientY - scrollThumb.getBoundingClientRect().top;
+      scrollThumb.setPointerCapture(event.pointerId);
+      scrollThumb.classList.add('is-dragging');
+    });
+    scrollThumb.addEventListener('pointermove', event => {
+      if (!dragging) return;
+      const trackRect = scrollTrack.getBoundingClientRect();
+      const thumbHeight = scrollThumb.offsetHeight;
+      const maxTop = trackRect.height - thumbHeight;
+      const top = Math.max(0, Math.min(maxTop, event.clientY - trackRect.top - dragOffset));
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      window.scrollTo(0, (top / maxTop) * scrollable);
+    });
+    const stopDragging = () => {
+      dragging = false;
+      scrollThumb.classList.remove('is-dragging');
+    };
+    scrollThumb.addEventListener('pointerup', stopDragging);
+    scrollThumb.addEventListener('pointercancel', stopDragging);
+    scrollTrack.addEventListener('pointerdown', event => {
+      if (event.target === scrollThumb) return;
+      const rect = scrollTrack.getBoundingClientRect();
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const position = Math.max(0, Math.min(rect.height, event.clientY - rect.top));
+      window.scrollTo({ top: (position / rect.height) * scrollable, behavior: 'smooth' });
+    });
+  }
 
   const workList = document.querySelector('[data-github-work]');
   const githubUser = 'DX4GREY';
@@ -35,6 +101,34 @@
     document.querySelectorAll('.marquee [data-content]').forEach(element => {
       element.textContent += ' ';
     });
+  };
+
+  const dismissIntro = () => {
+    if (!introScreen) return;
+    introScreen.classList.add('is-done');
+    document.body.classList.remove('intro-active');
+    window.setTimeout(() => introScreen.remove(), 700);
+  };
+
+  const runIntro = () => {
+    if (!introScreen || !introWord) return;
+    document.body.classList.add('intro-active');
+    const words = uiContent.intro.words;
+    let index = 0;
+    introWord.textContent = words[index];
+    const interval = window.setInterval(() => {
+      index += 1;
+      if (index >= words.length) return;
+      introWord.classList.remove('intro-word-change');
+      window.requestAnimationFrame(() => {
+        introWord.textContent = words[index];
+        introWord.classList.add('intro-word-change');
+      });
+    }, 390);
+    window.setTimeout(() => {
+      window.clearInterval(interval);
+      dismissIntro();
+    }, uiContent.intro.duration);
   };
 
   const renderProjects = repos => {
@@ -70,7 +164,11 @@
     }
   };
 
-  loadContent().then(loadGithubWork).catch(() => {
+  loadContent().then(() => {
+    runIntro();
+    return loadGithubWork();
+  }).catch(() => {
+    dismissIntro();
     if (workList) workList.innerHTML = '<p class="work-loading mono">CONTENT FILE UNAVAILABLE.</p>';
   });
 
@@ -116,7 +214,19 @@
     window.addEventListener('resize', () => { if (window.innerWidth > 800 && nav.classList.contains('open')) closeMenu(); }, { passive: true });
   }
 
-  const revealItems = document.querySelectorAll('.reveal');
+  const motionSelectors = [
+    '.wordmark', '.nav nav', '.hero-top > *', '.hero-center > *', '.hero-bottom > *',
+    '.section-index', '.about-grid > *', '.github-profile > *', '.about-copy > *',
+    '.expertise-head > *', '.skill', '.skill > *', '.work-title', '.work-meta > *',
+    '.project-caption > *', '.contact-inner > *', '.contact-links .email', '.contact-foot > *',
+    'footer > *'
+  ];
+  document.querySelectorAll(motionSelectors.join(',')).forEach((element, index) => {
+    if (!element.classList.contains('reveal')) element.classList.add('motion-item');
+    element.style.setProperty('--motion-delay', `${Math.min(index % 7, 6) * 70}ms`);
+  });
+
+  const revealItems = document.querySelectorAll('.reveal, .motion-item');
   if ('IntersectionObserver' in window && !reduceMotion) {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
