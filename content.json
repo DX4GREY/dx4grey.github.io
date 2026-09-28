@@ -75,6 +75,7 @@
     "loading": "LOADING LATEST PROJECTS FROM GITHUB...",
     "error": "UNABLE TO LOAD LIVE PROJECTS.",
     "viewAll": "VIEW ALL ON GITHUB ↗",
+    "pinnedRepos": ["nizaw", "esp8266_wifitools", "esp32_rfsuite"],
     "updated": "UPDATED",
     "openSource": "OPEN SOURCE",
     "defaultDescription": "Open-source project by DX4GREY."

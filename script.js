@@ -102,6 +102,13 @@
     document.querySelectorAll('.marquee [data-content]').forEach(element => {
       element.textContent += ' ';
     });
+    document.querySelectorAll('.glitch-target').forEach(element => {
+      const text = element.textContent.trim();
+      if (!text || element.dataset.glitchReady) return;
+      element.dataset.glitchReady = 'true';
+      element.setAttribute('aria-label', text);
+      element.innerHTML = `<span class="glitch-layer glitch-red" aria-hidden="true">${escapeHtml(text)}</span><span class="glitch-layer glitch-cyan" aria-hidden="true">${escapeHtml(text)}</span><span class="glitch-layer glitch-green" aria-hidden="true">${escapeHtml(text)}</span><span class="glitch-main">${escapeHtml(text)}</span>`;
+    });
   };
 
   const dismissIntro = () => {
@@ -156,13 +163,11 @@
   const renderProjects = repos => {
     workList.innerHTML = repos.map((repo, index) => {
       const number = String(index + 1).padStart(2, '0');
-      const art = `art-${['one', 'two', 'three'][index % 3]}`;
       const name = repo.name.replace(/[-_]/g, ' ').toUpperCase();
       const language = repo.language ? escapeHtml(repo.language).toUpperCase() : uiContent.work.openSource;
       const description = repo.description || uiContent.work.defaultDescription;
       return `<a class="project reveal" href="${escapeHtml(repo.html_url)}" target="_blank" rel="noreferrer">
-        <div class="project-art ${art}"><span>${escapeHtml(repo.name.slice(0, 9).toUpperCase())}</span><small>${number} / ${language} / ★ ${repo.stargazers_count}</small><div class="art-${['circle', 'grid', 'line'][index % 3]}"></div></div>
-        <div class="project-caption"><b>${number}</b><div><h3>${escapeHtml(name)}</h3><p>${escapeHtml(description)}</p><small class="project-updated">${uiContent.work.updated} ${formatDate(repo.updated_at)}</small></div><span>↗</span></div>
+        <div class="project-caption"><b>${number}</b><div><h3>${escapeHtml(name)}</h3><p>${escapeHtml(description)}</p><small class="project-updated">${language} / ★ ${repo.stargazers_count} · ${uiContent.work.updated} ${formatDate(repo.updated_at)}</small></div><span>↗</span></div>
       </a>`;
     }).join('');
     workList.querySelectorAll('.reveal').forEach((el, index) => {
@@ -176,10 +181,13 @@
   const loadGithubWork = async () => {
     if (!workList) return;
     try {
-      const response = await fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&direction=desc&per_page=6`, { headers: { Accept: 'application/vnd.github+json' } });
+      const response = await fetch(`https://api.github.com/users/${githubUser}/repos?sort=updated&direction=desc&per_page=100`, { headers: { Accept: 'application/vnd.github+json' } });
       if (!response.ok) throw new Error('GitHub API unavailable');
-      const repos = (await response.json()).filter(repo => !repo.fork).slice(0, 6);
-      if (!repos.length) throw new Error('No public repositories found');
+      const pinnedRepos = new Set((uiContent.work.pinnedRepos || []).map(name => name.toLowerCase()));
+      const repos = (await response.json())
+        .filter(repo => !repo.fork && pinnedRepos.has(repo.name.toLowerCase()))
+        .sort((a, b) => (uiContent.work.pinnedRepos.indexOf(a.name) - uiContent.work.pinnedRepos.indexOf(b.name)));
+      if (!repos.length) throw new Error('No pinned repositories found');
       renderProjects(repos);
     } catch (error) {
       workList.innerHTML = `<p class="work-loading mono">${uiContent.work.error} <a href="https://github.com/${githubUser}?tab=repositories" target="_blank" rel="noreferrer">${uiContent.work.viewAll}</a></p>`;
@@ -205,9 +213,34 @@
       });
     }, { passive: true });
 
-    document.querySelectorAll('a,button,.skill,.project-art').forEach(el => {
+    document.querySelectorAll('a,button,.skill,.project-art,.project').forEach(el => {
       el.addEventListener('mouseenter', () => { ring.style.width='55px'; ring.style.height='55px'; });
       el.addEventListener('mouseleave', () => { ring.style.width='34px'; ring.style.height='34px'; });
+    });
+  }
+
+  const siteHeader = document.querySelector('.nav');
+  const hero = document.querySelector('.hero');
+  const heroCenter = document.querySelector('.hero-center');
+  window.addEventListener('scroll', () => {
+    siteHeader?.classList.toggle('is-scrolled', window.scrollY > 12);
+  }, { passive: true });
+
+  if (hero && heroCenter && window.matchMedia('(pointer:fine)').matches && !reduceMotion) {
+    let heroFrame = 0;
+    let pointerX = 0;
+    let pointerY = 0;
+    hero.addEventListener('pointermove', event => {
+      const rect = hero.getBoundingClientRect();
+      pointerX = (event.clientX - rect.left) / rect.width - 0.5;
+      pointerY = (event.clientY - rect.top) / rect.height - 0.5;
+      if (!heroFrame) heroFrame = requestAnimationFrame(() => {
+        heroCenter.style.transform = `translate3d(${pointerX * 8}px, ${pointerY * 5}px, 0)`;
+        heroFrame = 0;
+      });
+    }, { passive: true });
+    hero.addEventListener('pointerleave', () => {
+      heroCenter.style.transform = '';
     });
   }
 
