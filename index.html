@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="DX4GREY — Backend Developer, System Tweaking, Linux, Security Research, and Embedded Systems." />
-  <title>DX4GREY — Developer Portfolio</title>
+  <meta name="description" data-content-attr="content.meta.description" content="" />
+  <title data-content="meta.title"></title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Anton&display=swap" rel="stylesheet">
@@ -15,93 +15,88 @@
   <div class="cursor-ring"></div>
 
   <header class="nav">
-    <a class="wordmark" href="#top">DX4GREY<span>.</span></a>
-    <button class="drawer-backdrop" type="button" aria-label="Close menu"></button>
-    <nav id="site-nav" aria-label="Primary navigation" aria-hidden="false">
-      <div class="drawer-head"><span class="mono">MENU / NAVIGATION</span><button class="drawer-close" type="button" aria-label="Close menu">×</button></div>
-      <a href="#work">WORK</a>
-      <a href="#about">ABOUT</a>
-      <a href="#expertise">EXPERTISE</a>
-      <a href="#contact">CONTACT</a>
+    <a class="wordmark" href="#top"><span data-content="meta.brand"></span><span>.</span></a>
+    <button class="drawer-backdrop" type="button" data-content-attr="aria-label.nav.close" aria-label=""></button>
+    <nav id="site-nav" data-content-attr="aria-label.nav.menuLabel" aria-label="" aria-hidden="false">
+      <div class="drawer-head"><span class="mono" data-content="nav.menuLabel"></span><button class="drawer-close" type="button" data-content-attr="aria-label.nav.close" aria-label="">×</button></div>
+      <a href="#work" data-content="nav.work"></a>
+      <a href="#about" data-content="nav.about"></a>
+      <a href="#expertise" data-content="nav.expertise"></a>
+      <a href="#contact" data-content="nav.contact"></a>
     </nav>
-    <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+    <button class="menu" type="button" data-content-attr="aria-label.nav.open" aria-label="" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
   </header>
 
   <main id="top">
     <section class="hero page-grid">
-      <div class="hero-top mono"><span>BACKEND / SYSTEMS</span><span>© 2026 DX4GREY</span></div>
+      <div class="hero-top mono"><span data-content="hero.eyebrow"></span><span data-content="hero.copyright"></span></div>
       <div class="hero-center">
-        <div class="hero-kicker reveal">DX4GREY</div>
-        <h1 class="hero-title reveal">DEVELOPER</h1>
+        <div class="hero-kicker reveal" data-content="hero.kicker"></div>
+        <h1 class="hero-title reveal" data-content="hero.title"></h1>
         <div class="hero-sub reveal">
-          <span>BACKEND</span><i></i><span>LINUX</span><i></i><span>EMBEDDED</span>
+          <span data-content="hero.categories.0"></span><i></i><span data-content="hero.categories.1"></span><i></i><span data-content="hero.categories.2"></span>
         </div>
       </div>
       <div class="hero-bottom">
-        <div class="hero-note reveal">I BUILD SYSTEMS, TOOLS & DIGITAL EXPERIENCES FROM THE BACKEND TO THE HARDWARE.</div>
-        <div class="scroll-cue reveal"><span>SCROLL TO EXPLORE</span><b>↓</b></div>
-        <div class="stamp">DX4GREY<br><small>BACKEND<br>DEVELOPER</small><b>↗</b></div>
+        <div class="hero-note reveal" data-content="hero.note"></div>
+        <div class="scroll-cue reveal"><span data-content="hero.scroll"></span><b>↓</b></div>
+        <div class="stamp"><span data-content="hero.stampTitle"></span><br><small><span data-content="hero.stampSubtitle.0"></span><br><span data-content="hero.stampSubtitle.1"></span></small><b>↗</b></div>
       </div>
     </section>
 
-    <div class="marquee"><div>BACKEND DEVELOPMENT ✦ LINUX ✦ SECURITY RESEARCH ✦ EMBEDDED SYSTEMS ✦ OPEN SOURCE ✦ </div><div>BACKEND DEVELOPMENT ✦ LINUX ✦ SECURITY RESEARCH ✦ EMBEDDED SYSTEMS ✦ OPEN SOURCE ✦ </div></div>
+    <div class="marquee"><div data-content="marquee"></div><div data-content="marquee"></div></div>
 
     <section id="about" class="dark section page-grid">
-      <div class="section-index mono">01 — WHO AM I?</div>
+      <div class="section-index mono" data-content="about.index"></div>
       <div class="about-grid">
         <aside class="github-profile reveal" aria-label="GitHub profile">
           <div class="github-profile-top">
-            <span class="mono">GITHUB / PROFILE</span>
-            <span class="profile-status"><i></i> PUBLIC</span>
+            <span class="mono" data-content="about.profileLabel"></span>
+            <span class="profile-status"><i></i> <span data-content="about.public"></span></span>
           </div>
-          <div class="github-avatar-wrap"><img src="https://avatars.githubusercontent.com/u/139307763?s=512&v=4" alt="DX4GREY GitHub avatar" loading="lazy" decoding="async"></div>
-          <div class="github-name-row"><div><h3>Direct Xploit 4 Alphabet</h3><p>@DX4GREY</p></div><a href="https://github.com/DX4GREY" target="_blank" rel="noreferrer" aria-label="Open DX4GREY GitHub profile">↗</a></div>
-          <p class="github-bio">Backend Developer <span>|</span> System Tweaking</p>
-          <div class="github-meta"><span>🇮🇩 Indonesian</span><span>Sultan Ageng Tirtayasa University</span></div>
-          <div class="github-stats"><div><b>51</b><span>REPOS</span></div><div><b>46</b><span>STARS</span></div><div><b>23</b><span>FOLLOWERS</span></div></div>
-          <a class="telegram-link" href="https://t.me/Dx4Grey" target="_blank" rel="noreferrer"><span>CONNECT / TELEGRAM</span><b>↗</b></a>
+          <div class="github-avatar-wrap"><img src="https://avatars.githubusercontent.com/u/139307763?s=512&v=4" data-content-attr="alt.about.avatarAlt" alt="" loading="lazy" decoding="async"></div>
+          <div class="github-name-row"><div><h3 data-content="about.name"></h3><p data-content="about.handle"></p></div><a href="https://github.com/DX4GREY" target="_blank" rel="noreferrer" data-content-attr="aria-label.about.profileLinkLabel" aria-label="">↗</a></div>
+          <p class="github-bio"><span data-content="about.bio"></span> <span data-content="about.bioDivider"></span> <span data-content="about.bioFocus"></span></p>
+          <div class="github-meta"><span data-content="about.location"></span><span data-content="about.university"></span></div>
+          <div class="github-stats"><div><b data-content="about.stats.0.0"></b><span data-content="about.stats.0.1"></span></div><div><b data-content="about.stats.1.0"></b><span data-content="about.stats.1.1"></span></div><div><b data-content="about.stats.2.0"></b><span data-content="about.stats.2.1"></span></div></div>
+          <a class="telegram-link" href="https://t.me/Dx4Grey" target="_blank" rel="noreferrer"><span data-content="about.telegram"></span><b>↗</b></a>
         </aside>
         <div class="about-copy reveal">
-          <p class="eyebrow mono">ABOUT ME</p>
-          <h2>I LIKE TO EXPLORE WHAT HAPPENS <em>UNDER THE HOOD.</em></h2>
+          <p class="eyebrow mono" data-content="about.eyebrow"></p>
+          <h2><span data-content="about.heading.before"></span> <em data-content="about.heading.emphasis"></em></h2>
           <div class="copy-columns">
-            <p>Backend developer from Indonesia. I explore the space between systems software, embedded hardware, and responsible security research.</p>
-            <p>Linux internals, C++ tooling, ESP32 experiments, and open-source software are the areas I keep coming back to—building, documenting, testing, and sharing useful things.</p>
+            <p data-content="about.paragraphs.0"></p><p data-content="about.paragraphs.1"></p>
           </div>
-          <div class="facts"><div><small>ROLE</small><b>BACKEND DEVELOPER</b></div><div><small>FOCUS</small><b>SYSTEM TWEAKING</b></div><div><small>STACK</small><b>C++20 / LINUX</b></div><div><small>HARDWARE</small><b>ESP32 / NRF24L01+</b></div></div>
+          <div class="facts"><div><small data-content="about.facts.0.0"></small><b data-content="about.facts.0.1"></b></div><div><small data-content="about.facts.1.0"></small><b data-content="about.facts.1.1"></b></div><div><small data-content="about.facts.2.0"></small><b data-content="about.facts.2.1"></b></div><div><small data-content="about.facts.3.0"></small><b data-content="about.facts.3.1"></b></div></div>
         </div>
       </div>
     </section>
 
     <section id="expertise" class="dark expertise section page-grid">
-      <div class="section-index mono">02 — EXPERTISE</div>
-      <div class="expertise-head reveal"><div><h2>MY<br><span>EXPERTISE</span></h2><p>Building applications, experimenting with Linux systems, developing embedded projects, and exploring low-level technologies.</p></div><div class="orb-mark">DX</div></div>
+      <div class="section-index mono" data-content="expertise.index"></div>
+      <div class="expertise-head reveal"><div><h2><span data-content="expertise.heading.0"></span><br><span data-content="expertise.heading.1"></span></h2><p data-content="expertise.description"></p></div><div class="orb-mark" data-content="meta.brand"></div></div>
       <div class="skills">
-        <article class="skill reveal"><span>01</span><div><h3>Backend Development</h3><p>Building applications, developer tools, automation utilities, and web services.</p></div><b>↗</b></article>
-        <article class="skill reveal"><span>02</span><div><h3>Linux & Kernel</h3><p>Linux customization, kernel development experiments, and system-level programming.</p></div><b>↗</b></article>
-        <article class="skill reveal"><span>03</span><div><h3>Security Research</h3><p>Exploring web security concepts, network analysis, and defensive security practices.</p></div><b>↗</b></article>
-        <article class="skill reveal"><span>04</span><div><h3>Embedded & IoT</h3><p>Arduino, ESP projects, microcontroller programming, and hardware experimentation.</p></div><b>↗</b></article>
+        <article class="skill reveal"><span data-content="expertise.skills.0.0"></span><div><h3 data-content="expertise.skills.0.1"></h3><p data-content="expertise.skills.0.2"></p></div><b>↗</b></article>
+        <article class="skill reveal"><span data-content="expertise.skills.1.0"></span><div><h3 data-content="expertise.skills.1.1"></h3><p data-content="expertise.skills.1.2"></p></div><b>↗</b></article>
+        <article class="skill reveal"><span data-content="expertise.skills.2.0"></span><div><h3 data-content="expertise.skills.2.1"></h3><p data-content="expertise.skills.2.2"></p></div><b>↗</b></article>
+        <article class="skill reveal"><span data-content="expertise.skills.3.0"></span><div><h3 data-content="expertise.skills.3.1"></h3><p data-content="expertise.skills.3.2"></p></div><b>↗</b></article>
       </div>
     </section>
 
     <section id="work" class="dark work section page-grid">
-      <div class="work-title reveal"><span class="giant">WORK</span><span class="drip">••</span></div>
-      <div class="work-meta mono"><span>03 — SELECTED WORK</span><span>DRAG / SCROLL TO EXPLORE</span></div>
-      <div class="project-list">
-        <a class="project reveal" href="https://github.com/DX4GREY/nizaw" target="_blank" rel="noreferrer"><div class="project-art art-one"><span>NIZAW</span><small>01 / C++20 / LINUX</small><div class="art-circle"></div></div><div class="project-caption"><b>01</b><div><h3>NIZAW FRAMEWORK</h3><p>Modern Linux System & CLI Framework written in C++20</p></div><span>↗</span></div></a>
-        <a class="project reveal" href="https://github.com/DX4GREY/esp32_rfsuite" target="_blank" rel="noreferrer"><div class="project-art art-two"><span>RF</span><small>02 / ESP32-S3 / C++</small><div class="art-grid"></div></div><div class="project-caption"><b>02</b><div><h3>ESP32 RF SUITE</h3><p>RF analyzer with spectrum scanning, waterfall visualization, logging and diagnostics</p></div><span>↗</span></div></a>
-        <a class="project reveal" href="https://github.com/DX4GREY/esp8266_wifitools" target="_blank" rel="noreferrer"><div class="project-art art-three"><span>ESP</span><small>03 / ESP8266 / C</small><div class="art-line"></div></div><div class="project-caption"><b>03</b><div><h3>ESP8266 WIFI TOOLS</h3><p>Educational WiFi testing toolkit built for the ESP8266</p></div><span>↗</span></div></a>
-      </div>
+      <div class="work-title reveal"><span class="giant" data-content="work.title"></span><span class="drip">••</span></div>
+      <div class="work-meta mono"><span data-content="work.index"></span><span data-content="work.instruction"></span></div>
+      <div class="project-list" data-github-work aria-live="polite"><p class="work-loading mono" data-content="work.loading"></p></div>
     </section>
 
     <section id="contact" class="contact page-grid">
-      <div class="section-index mono">04 — LET'S TALK</div>
-      <div class="contact-inner reveal"><p class="mono">WANT TO BUILD SOMETHING?</p><h2>LET'S MAKE<br><em>TECHNOLOGY</em><br>INTERESTING.</h2><a href="https://github.com/DX4GREY" target="_blank" rel="noreferrer" class="email">github.com/DX4GREY <span>↗</span></a></div>
-      <div class="contact-foot mono"><span>OPEN TO COLLABORATION</span><span>INDONESIA · WORLDWIDE</span></div>
+      <div class="section-index mono" data-content="contact.index"></div>
+      <div class="contact-inner reveal"><p class="mono" data-content="contact.eyebrow"></p><h2><span data-content="contact.heading.0"></span><br><em data-content="contact.heading.1"></em><br><span data-content="contact.heading.2"></span></h2><div class="contact-links"><a href="https://t.me/Dx4Grey" target="_blank" rel="noreferrer" class="email"><span data-content="contact.telegram"></span><span>↗</span></a><a href="https://github.com/DX4GREY" target="_blank" rel="noreferrer" class="email"><span data-content="contact.github"></span><span>↗</span></a><a href="https://github.com/sponsors/DX4GREY" target="_blank" rel="noreferrer" class="email sponsor-link"><span data-content="contact.sponsors"></span><span>↗</span></a></div></div>
+      <div class="contact-foot mono"><span data-content="contact.open"></span><span data-content="contact.worldwide"></span></div>
     </section>
   </main>
 
-  <footer class="dark"><span>© 2026 DX4GREY</span><span>DESIGNED & BUILT WITH INTENT</span><a href="#top">BACK TO TOP ↑</a></footer>
+  <footer class="dark"><span data-content="footer.copyright"></span><span data-content="footer.built"></span><a href="#top" data-content="footer.backTop"></a></footer>
   <script src="script.js"></script>
 </body>
 </html>

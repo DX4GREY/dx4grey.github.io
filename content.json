@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "brand": "DX4GREY",
+    "title": "DX4GREY — Developer Portfolio",
+    "description": "DX4GREY — Backend Developer, System Tweaking, Linux, Security Research, and Embedded Systems."
+  },
+  "nav": {
+    "menuLabel": "MENU / NAVIGATION",
+    "open": "Open menu",
+    "close": "Close menu",
+    "work": "WORK",
+    "about": "ABOUT",
+    "expertise": "EXPERTISE",
+    "contact": "CONTACT"
+  },
+  "hero": {
+    "eyebrow": "BACKEND / SYSTEMS",
+    "copyright": "© 2026 DX4GREY",
+    "kicker": "DX4GREY",
+    "title": "DEVELOPER",
+    "categories": ["BACKEND", "LINUX", "EMBEDDED"],
+    "note": "I BUILD SYSTEMS, TOOLS & DIGITAL EXPERIENCES FROM THE BACKEND TO THE HARDWARE.",
+    "scroll": "SCROLL TO EXPLORE",
+    "stampTitle": "DX4GREY",
+    "stampSubtitle": ["BACKEND", "DEVELOPER"]
+  },
+  "marquee": "BACKEND DEVELOPMENT ✦ LINUX ✦ SECURITY RESEARCH ✦ EMBEDDED SYSTEMS ✦ OPEN SOURCE ✦",
+  "about": {
+    "index": "01 — WHO AM I?",
+    "profileLabel": "GITHUB / PROFILE",
+    "public": "PUBLIC",
+    "avatarAlt": "DX4GREY GitHub avatar",
+    "name": "Direct Xploit 4 Alphabet",
+    "handle": "@DX4GREY",
+    "profileLinkLabel": "Open DX4GREY GitHub profile",
+    "bio": "Backend Developer",
+    "bioDivider": "|",
+    "bioFocus": "System Tweaking",
+    "location": "🇮🇩 Indonesian",
+    "university": "Sultan Ageng Tirtayasa University",
+    "stats": [["51", "REPOS"], ["46", "STARS"], ["23", "FOLLOWERS"]],
+    "telegram": "TELEGRAM / @DX4GREY",
+    "eyebrow": "ABOUT ME",
+    "heading": {"before": "I LIKE TO EXPLORE WHAT HAPPENS", "emphasis": "UNDER THE HOOD."},
+    "paragraphs": [
+      "Backend developer from Indonesia. I explore the space between systems software, embedded hardware, and responsible security research.",
+      "Linux internals, C++ tooling, ESP32 experiments, and open-source software are the areas I keep coming back to—building, documenting, testing, and sharing useful things."
+    ],
+    "facts": [
+      ["ROLE", "BACKEND DEVELOPER"],
+      ["FOCUS", "SYSTEM TWEAKING"],
+      ["STACK", "C++20 / LINUX"],
+      ["HARDWARE", "ESP32 / NRF24L01+"]
+    ]
+  },
+  "expertise": {
+    "index": "02 — EXPERTISE",
+    "heading": ["MY", "EXPERTISE"],
+    "description": "Building applications, experimenting with Linux systems, developing embedded projects, and exploring low-level technologies.",
+    "skills": [
+      ["01", "Backend Development", "Building applications, developer tools, automation utilities, and web services."],
+      ["02", "Linux & Kernel", "Linux customization, kernel development experiments, and system-level programming."],
+      ["03", "Security Research", "Exploring web security concepts, network analysis, and defensive security practices."],
+      ["04", "Embedded & IoT", "Arduino, ESP projects, microcontroller programming, and hardware experimentation."]
+    ]
+  },
+  "work": {
+    "title": "WORK",
+    "index": "03 — SELECTED WORK",
+    "instruction": "DRAG / SCROLL TO EXPLORE",
+    "loading": "LOADING LATEST PROJECTS FROM GITHUB...",
+    "error": "UNABLE TO LOAD LIVE PROJECTS.",
+    "viewAll": "VIEW ALL ON GITHUB ↗",
+    "updated": "UPDATED",
+    "openSource": "OPEN SOURCE",
+    "defaultDescription": "Open-source project by DX4GREY."
+  },
+  "contact": {
+    "index": "04 — LET'S TALK",
+    "eyebrow": "WANT TO BUILD SOMETHING?",
+    "heading": ["LET'S MAKE", "TECHNOLOGY", "INTERESTING."],
+    "telegram": "Telegram / @Dx4Grey",
+    "github": "github.com/DX4GREY",
+    "sponsors": "Support on GitHub Sponsors",
+    "open": "OPEN TO COLLABORATION",
+    "worldwide": "INDONESIA · WORLDWIDE"
+  },
+  "footer": {
+    "copyright": "© 2026 DX4GREY",
+    "built": "DESIGNED & BUILT WITH INTENT",
+    "backTop": "BACK TO TOP ↑"
+  }
+}
