@@ -238,10 +238,10 @@ footer a{transition:color .3s ease}
 .hero-kicker .glitch-main{color:transparent;background:linear-gradient(110deg,#0a0a0a 12%,#66583f 48%,#0a0a0a 82%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:1px rgba(10,10,10,.08)}
 .hero-title .glitch-main{color:transparent;background:linear-gradient(180deg,#0a0a0a 35%,#4b3d27 100%);background-size:180% 180%;-webkit-background-clip:text;background-clip:text;-webkit-text-stroke:1px rgba(10,10,10,.12)}
 .glitch-layer{position:absolute;inset:0;z-index:2;display:block;pointer-events:none;opacity:0;white-space:inherit;font:inherit;line-height:inherit;letter-spacing:inherit;mix-blend-mode:multiply}
-.glitch-red{color:#ff1744;text-shadow:2px 0 #ff1744;animation:none}
-.glitch-cyan{color:#00d9ff;text-shadow:-2px 0 #00d9ff;animation:none}
-.glitch-green{color:#00d084;text-shadow:1px 0 #00d084;animation:none}
-.glitch-main:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(255,255,255,.22) 10px 11px,transparent 12px 18px);mix-blend-mode:overlay;opacity:0;pointer-events:none;animation:none}
+.glitch-red{color:#ff1744;text-shadow:2px 0 #ff1744;opacity:.1;animation:glitch-idle-red 7s ease-in-out infinite alternate}
+.glitch-cyan{color:#00d9ff;text-shadow:-2px 0 #00d9ff;opacity:.1;animation:glitch-idle-cyan 7s ease-in-out infinite alternate}
+.glitch-green{color:#00d084;text-shadow:1px 0 #00d084;opacity:.06;animation:glitch-idle-green 8s ease-in-out infinite alternate}
+.glitch-main:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 9px,rgba(255,255,255,.22) 10px 11px,transparent 12px 18px);mix-blend-mode:overlay;opacity:.025;pointer-events:none;animation:glitch-idle-scan 9s ease-in-out infinite alternate}
 .glitch-target:hover{animation:none!important;filter:none}
 .glitch-target:hover .glitch-red{opacity:.78;transform:translate(5px,0);clip-path:none;animation:none}
 .glitch-target:hover .glitch-cyan{opacity:.78;transform:translate(-5px,0);clip-path:none;animation:none}
@@ -253,6 +253,37 @@ footer a{transition:color .3s ease}
 @keyframes glitch-cyan{0%,83%,100%{opacity:0;transform:none;clip-path:inset(0)}85%{opacity:.7;transform:translate(-5px,1px) skewX(2deg);clip-path:inset(38% 0 42% 0)}87%{opacity:.55;transform:translate(3px,-1px);clip-path:inset(74% 0 8% 0)}89%{opacity:0}}
 @keyframes glitch-green{0%,84%,100%{opacity:0;transform:none;clip-path:inset(0)}86%{opacity:.5;transform:translate(2px,0);clip-path:inset(18% 0 58% 0)}88%{opacity:.38;transform:translate(-2px,0);clip-path:inset(66% 0 18% 0)}90%{opacity:0}}
 @keyframes glitch-scan{0%,82%,100%{opacity:0}85%,89%{opacity:.35}91%{opacity:0}}
+@keyframes glitch-idle-red{0%,100%{opacity:.07;transform:translate(1px,0)}50%{opacity:.16;transform:translate(2px,-1px)}}
+@keyframes glitch-idle-cyan{0%,100%{opacity:.07;transform:translate(-1px,0)}50%{opacity:.16;transform:translate(-2px,1px)}}
+@keyframes glitch-idle-green{0%,100%{opacity:.04;transform:translate(0,0)}50%{opacity:.1;transform:translate(1px,0)}}
+@keyframes glitch-idle-scan{0%,100%{opacity:.015;transform:translateY(-3%)}50%{opacity:.06;transform:translateY(3%)}}
 @media(prefers-reduced-motion:reduce){
   .glitch-red,.glitch-cyan,.glitch-green,.glitch-main:after{animation:none;transition:none}
+}
+
+/* --- Global smooth motion pass --- */
+h1,h2,h3,.giant{animation:heading-breathe 6s ease-in-out infinite alternate}
+.skill h3{animation-delay:-1s}.project-caption h3{animation-delay:-2s}.contact h2{animation-delay:-3s}
+.hero-top>span,.hero-note,.work-meta>span,.contact-foot>span,footer>span{animation:soft-presence 6s ease-in-out infinite alternate}
+.hero-top>span:last-child{animation-delay:-2s}.work-meta>span:last-child{animation-delay:-1.5s}.contact-foot>span:last-child{animation-delay:-2.5s}
+.hero-sub span,.facts>div,.github-meta span,.project-updated,footer a{transition:color .45s ease,opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.hero-sub span:hover,.facts>div:hover,.github-meta span:hover,.project-updated:hover,footer a:hover{color:var(--cream);opacity:1;transform:translateY(-3px)}
+.copy-columns p{animation:copy-breathe 8s ease-in-out infinite alternate}
+.copy-columns p:nth-child(2){animation-delay:-3s}
+.expertise-head p{animation:copy-breathe 7s ease-in-out infinite alternate -1.5s}
+.github-meta span{animation:meta-blink 5s ease-in-out infinite}
+.github-meta span:nth-child(2){animation-delay:-2s}
+.contact-inner>p,.contact-foot{animation:soft-presence 7s ease-in-out infinite alternate -2s}
+.drawer-head .mono{animation:soft-presence 5s ease-in-out infinite alternate}
+.drawer-close,.menu{transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .35s ease,background .35s ease}
+.drawer-close:hover{transform:rotate(90deg) scale(1.08);color:var(--cream)}
+.menu:hover{transform:scale(1.12)}
+@keyframes soft-presence{0%{opacity:.72}100%{opacity:1}}
+@keyframes copy-breathe{0%{opacity:.78}100%{opacity:1}}
+@keyframes meta-blink{0%,100%{opacity:.62}50%{opacity:.95}}
+@keyframes heading-breathe{0%{text-shadow:0 0 0 rgba(215,189,130,0)}100%{text-shadow:0 0 18px rgba(215,189,130,.16)}}
+@media(prefers-reduced-motion:reduce){
+  h1,h2,h3,.giant{animation:none}
+  .hero-top>span,.hero-note,.work-meta>span,.contact-foot>span,footer>span,.copy-columns p,.expertise-head p,.github-meta span,.contact-inner>p,.contact-foot,.drawer-head .mono{animation:none}
+  .hero-sub span,.facts>div,.github-meta span,.project-updated,footer a,.drawer-close,.menu{transition:none}
 }
