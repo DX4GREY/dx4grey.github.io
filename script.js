@@ -8,6 +8,7 @@
   const backdrop = document.querySelector('.drawer-backdrop');
   const introScreen = document.querySelector('[data-intro]');
   const introWord = document.querySelector('[data-intro-word]');
+  const introLottie = document.querySelector('[data-intro-lottie]');
   const scrollTrack = document.querySelector('[data-custom-scrollbar]');
   const scrollThumb = document.querySelector('[data-scroll-thumb]');
   let uiContent = null;
@@ -113,6 +114,27 @@
   const runIntro = () => {
     if (!introScreen || !introWord) return;
     document.body.classList.add('intro-active');
+    if (introLottie && window.lottie) {
+      introWord.hidden = true;
+      const animation = window.lottie.loadAnimation({
+        container: introLottie,
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        path: 'hello-animation.json'
+      });
+      animation.setSpeed(1.6);
+      animation.addEventListener('DOMLoaded', () => {
+        introLottie.querySelectorAll('path').forEach(path => {
+          path.style.stroke = '#d7bd82';
+          path.style.fill = 'none';
+        });
+      });
+      animation.addEventListener('complete', dismissIntro, { once: true });
+      window.setTimeout(dismissIntro, uiContent.intro.duration + 500);
+      return;
+    }
+    introWord.hidden = false;
     const words = uiContent.intro.words;
     let index = 0;
     introWord.textContent = words[index];

@@ -5,8 +5,8 @@
     "description": "DX4GREY — Backend Developer, System Tweaking, Linux, Security Research, and Embedded Systems."
   },
   "intro": {
-    "words": ["hello", "hola", "bonjour", "こんにちは", "안녕하세요", "привет", "สวัสดี"],
-    "duration": 2700
+    "words": ["hello"],
+    "duration": 4200
   },
   "nav": {
     "menuLabel": "MENU / NAVIGATION",
