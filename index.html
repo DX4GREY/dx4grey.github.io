@@ -1,42 +1,107 @@
-<!DOCTYPE html><html lang="id">
+<!doctype html>
+<html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dx4Grey | Linux Journey</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="DX4GREY — Backend Developer, System Tweaking, Linux, Security Research, and Embedded Systems." />
+  <title>DX4GREY — Developer Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Anton&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Dx4Grey</h1>
-    <p>From Termux to Kernel Level | Open-Source Hacker</p>
-  </header>  <section>
-    <h2>👨‍💻 About Me</h2>
-    <p>At first I was just a curious kid who played Termux non-root on Android, but now I've plunged into the world of Linux kernel. I learned from scratch, from the Android emulator to run Termux, until finally</p>
-    
-    <h2>🛠️ Featured Projects</h2>
-	
-	<div class="project">
-	  <h3><a href="https://github.com/DX4GREY/kernel_xiaomi_sdm845" target="_blank">kernel_xiaomi_sdm845</a></h3>
-	  <p>My own modified kernel for Xiaomi Pocophone F1, has been patched and is ready for further exploration at the hardware level.</p>
-	</div>
-	
-	<div class="project">
-	  <h3><a href="https://github.com/DX4GREY/AirHack-Project" target="_blank">AirHack-Project</a></h3>
-	  <p>An Android App-based wireless pentest tool, which I developed based on mdk4 to help test WiFi and automate attacks.</p>
-	</div>
-	
-	<div class="project">
-	  <h3><a href="https://github.com/DX4GREY/esp8266_wifitools" target="_blank">esp8266_wifitools</a></h3>
-	  <p>A series of hardware & script tools for ESP8266 that can be used for network testing and wireless experiments.</p>
-	</div>
-	
-	<h2>🌐 Contact & Social Media</h2>
-	<ul>
-	  <li>GitHub: <a href="https://github.com/DX4GREY" target="_blank">@DX4GREY</a></li>
-	</ul>
-  </section>  <footer>
-    <p>© 2025 Dx4Grey. Built with love & Linux.</p>
-  </footer>
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"></div>
+
+  <header class="nav">
+    <a class="wordmark" href="#top">DX4GREY<span>.</span></a>
+    <button class="drawer-backdrop" type="button" aria-label="Close menu"></button>
+    <nav id="site-nav" aria-label="Primary navigation" aria-hidden="false">
+      <div class="drawer-head"><span class="mono">MENU / NAVIGATION</span><button class="drawer-close" type="button" aria-label="Close menu">×</button></div>
+      <a href="#work">WORK</a>
+      <a href="#about">ABOUT</a>
+      <a href="#expertise">EXPERTISE</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <button class="menu" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+  </header>
+
+  <main id="top">
+    <section class="hero page-grid">
+      <div class="hero-top mono"><span>BACKEND / SYSTEMS</span><span>© 2026 DX4GREY</span></div>
+      <div class="hero-center">
+        <div class="hero-kicker reveal">DX4GREY</div>
+        <h1 class="hero-title reveal">DEVELOPER</h1>
+        <div class="hero-sub reveal">
+          <span>BACKEND</span><i></i><span>LINUX</span><i></i><span>EMBEDDED</span>
+        </div>
+      </div>
+      <div class="hero-bottom">
+        <div class="hero-note reveal">I BUILD SYSTEMS, TOOLS & DIGITAL EXPERIENCES FROM THE BACKEND TO THE HARDWARE.</div>
+        <div class="scroll-cue reveal"><span>SCROLL TO EXPLORE</span><b>↓</b></div>
+        <div class="stamp">DX4GREY<br><small>BACKEND<br>DEVELOPER</small><b>↗</b></div>
+      </div>
+    </section>
+
+    <div class="marquee"><div>BACKEND DEVELOPMENT ✦ LINUX ✦ SECURITY RESEARCH ✦ EMBEDDED SYSTEMS ✦ OPEN SOURCE ✦ </div><div>BACKEND DEVELOPMENT ✦ LINUX ✦ SECURITY RESEARCH ✦ EMBEDDED SYSTEMS ✦ OPEN SOURCE ✦ </div></div>
+
+    <section id="about" class="dark section page-grid">
+      <div class="section-index mono">01 — WHO AM I?</div>
+      <div class="about-grid">
+        <aside class="github-profile reveal" aria-label="GitHub profile">
+          <div class="github-profile-top">
+            <span class="mono">GITHUB / PROFILE</span>
+            <span class="profile-status"><i></i> PUBLIC</span>
+          </div>
+          <div class="github-avatar-wrap"><img src="https://avatars.githubusercontent.com/u/139307763?s=512&v=4" alt="DX4GREY GitHub avatar" loading="lazy" decoding="async"></div>
+          <div class="github-name-row"><div><h3>Direct Xploit 4 Alphabet</h3><p>@DX4GREY</p></div><a href="https://github.com/DX4GREY" target="_blank" rel="noreferrer" aria-label="Open DX4GREY GitHub profile">↗</a></div>
+          <p class="github-bio">Backend Developer <span>|</span> System Tweaking</p>
+          <div class="github-meta"><span>🇮🇩 Indonesian</span><span>Sultan Ageng Tirtayasa University</span></div>
+          <div class="github-stats"><div><b>51</b><span>REPOS</span></div><div><b>46</b><span>STARS</span></div><div><b>23</b><span>FOLLOWERS</span></div></div>
+          <a class="telegram-link" href="https://t.me/Dx4Grey" target="_blank" rel="noreferrer"><span>CONNECT / TELEGRAM</span><b>↗</b></a>
+        </aside>
+        <div class="about-copy reveal">
+          <p class="eyebrow mono">ABOUT ME</p>
+          <h2>I LIKE TO EXPLORE WHAT HAPPENS <em>UNDER THE HOOD.</em></h2>
+          <div class="copy-columns">
+            <p>Backend developer from Indonesia. I explore the space between systems software, embedded hardware, and responsible security research.</p>
+            <p>Linux internals, C++ tooling, ESP32 experiments, and open-source software are the areas I keep coming back to—building, documenting, testing, and sharing useful things.</p>
+          </div>
+          <div class="facts"><div><small>ROLE</small><b>BACKEND DEVELOPER</b></div><div><small>FOCUS</small><b>SYSTEM TWEAKING</b></div><div><small>STACK</small><b>C++20 / LINUX</b></div><div><small>HARDWARE</small><b>ESP32 / NRF24L01+</b></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="expertise" class="dark expertise section page-grid">
+      <div class="section-index mono">02 — EXPERTISE</div>
+      <div class="expertise-head reveal"><div><h2>MY<br><span>EXPERTISE</span></h2><p>Building applications, experimenting with Linux systems, developing embedded projects, and exploring low-level technologies.</p></div><div class="orb-mark">DX</div></div>
+      <div class="skills">
+        <article class="skill reveal"><span>01</span><div><h3>Backend Development</h3><p>Building applications, developer tools, automation utilities, and web services.</p></div><b>↗</b></article>
+        <article class="skill reveal"><span>02</span><div><h3>Linux & Kernel</h3><p>Linux customization, kernel development experiments, and system-level programming.</p></div><b>↗</b></article>
+        <article class="skill reveal"><span>03</span><div><h3>Security Research</h3><p>Exploring web security concepts, network analysis, and defensive security practices.</p></div><b>↗</b></article>
+        <article class="skill reveal"><span>04</span><div><h3>Embedded & IoT</h3><p>Arduino, ESP projects, microcontroller programming, and hardware experimentation.</p></div><b>↗</b></article>
+      </div>
+    </section>
+
+    <section id="work" class="dark work section page-grid">
+      <div class="work-title reveal"><span class="giant">WORK</span><span class="drip">••</span></div>
+      <div class="work-meta mono"><span>03 — SELECTED WORK</span><span>DRAG / SCROLL TO EXPLORE</span></div>
+      <div class="project-list">
+        <a class="project reveal" href="https://github.com/DX4GREY/nizaw" target="_blank" rel="noreferrer"><div class="project-art art-one"><span>NIZAW</span><small>01 / C++20 / LINUX</small><div class="art-circle"></div></div><div class="project-caption"><b>01</b><div><h3>NIZAW FRAMEWORK</h3><p>Modern Linux System & CLI Framework written in C++20</p></div><span>↗</span></div></a>
+        <a class="project reveal" href="https://github.com/DX4GREY/esp32_rfsuite" target="_blank" rel="noreferrer"><div class="project-art art-two"><span>RF</span><small>02 / ESP32-S3 / C++</small><div class="art-grid"></div></div><div class="project-caption"><b>02</b><div><h3>ESP32 RF SUITE</h3><p>RF analyzer with spectrum scanning, waterfall visualization, logging and diagnostics</p></div><span>↗</span></div></a>
+        <a class="project reveal" href="https://github.com/DX4GREY/esp8266_wifitools" target="_blank" rel="noreferrer"><div class="project-art art-three"><span>ESP</span><small>03 / ESP8266 / C</small><div class="art-line"></div></div><div class="project-caption"><b>03</b><div><h3>ESP8266 WIFI TOOLS</h3><p>Educational WiFi testing toolkit built for the ESP8266</p></div><span>↗</span></div></a>
+      </div>
+    </section>
+
+    <section id="contact" class="contact page-grid">
+      <div class="section-index mono">04 — LET'S TALK</div>
+      <div class="contact-inner reveal"><p class="mono">WANT TO BUILD SOMETHING?</p><h2>LET'S MAKE<br><em>TECHNOLOGY</em><br>INTERESTING.</h2><a href="https://github.com/DX4GREY" target="_blank" rel="noreferrer" class="email">github.com/DX4GREY <span>↗</span></a></div>
+      <div class="contact-foot mono"><span>OPEN TO COLLABORATION</span><span>INDONESIA · WORLDWIDE</span></div>
+    </section>
+  </main>
+
+  <footer class="dark"><span>© 2026 DX4GREY</span><span>DESIGNED & BUILT WITH INTENT</span><a href="#top">BACK TO TOP ↑</a></footer>
+  <script src="script.js"></script>
 </body>
 </html>
