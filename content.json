@@ -13,6 +13,7 @@
     "open": "Open menu",
     "close": "Close menu",
     "work": "WORK",
+    "certificates": "CERTIFICATES",
     "about": "ABOUT",
     "expertise": "EXPERTISE",
     "contact": "CONTACT"
@@ -80,8 +81,21 @@
     "openSource": "OPEN SOURCE",
     "defaultDescription": "Open-source project by DX4GREY."
   },
+  "certificates": {
+    "index": "04 — MY CERTIFICATES",
+    "eyebrow": "PROOF OF PRACTICE",
+    "heading": ["MY", "CERTS"],
+    "description": "A growing record of focused learning, practical experiments, and the systems I keep building under the hood.",
+    "loading": "LOADING CERTIFICATES...",
+    "viewCredential": "VIEW CREDENTIAL ↗",
+    "modalLabel": "CERTIFICATE DETAIL",
+    "openCredential": "OPEN SOURCE FILE",
+    "close": "Close certificate detail",
+    "issued": "ISSUED",
+    "credentialId": "CREDENTIAL ID"
+  },
   "contact": {
-    "index": "04 — LET'S TALK",
+    "index": "05 — LET'S TALK",
     "eyebrow": "WANT TO BUILD SOMETHING?",
     "heading": ["LET'S MAKE", "TECHNOLOGY", "INTERESTING."],
     "telegram": "Telegram / @Dx4Grey",

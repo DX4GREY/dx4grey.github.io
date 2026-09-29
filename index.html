@@ -23,6 +23,7 @@
     <nav id="site-nav" data-content-attr="aria-label.nav.menuLabel" aria-label="" aria-hidden="false">
       <div class="drawer-head"><span class="mono" data-content="nav.menuLabel"></span><button class="drawer-close" type="button" data-content-attr="aria-label.nav.close" aria-label="">×</button></div>
       <a href="#work" data-content="nav.work"></a>
+      <a href="#certificates" data-content="nav.certificates"></a>
       <a href="#about" data-content="nav.about"></a>
       <a href="#expertise" data-content="nav.expertise"></a>
       <a href="#contact" data-content="nav.contact"></a>
@@ -91,6 +92,29 @@
       <div class="work-meta mono"><span data-content="work.index"></span><span data-content="work.instruction"></span></div>
       <div class="project-list" data-github-work aria-live="polite"><p class="work-loading mono" data-content="work.loading"></p></div>
     </section>
+
+    <section id="certificates" class="dark certificates section page-grid">
+      <div class="section-index mono" data-content="certificates.index"></div>
+      <div class="certificates-head reveal">
+        <div>
+          <p class="eyebrow mono" data-content="certificates.eyebrow"></p>
+          <h2><span data-content="certificates.heading.0"></span><br><em data-content="certificates.heading.1"></em></h2>
+        </div>
+        <p data-content="certificates.description"></p>
+      </div>
+      <div class="certificate-list" data-certificates aria-live="polite"><p class="work-loading mono" data-content="certificates.loading"></p></div>
+    </section>
+
+    <div class="certificate-modal" data-certificate-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="certificate-modal-title">
+      <div class="certificate-modal-backdrop" data-certificate-close></div>
+      <div class="certificate-modal-panel">
+        <div class="certificate-modal-head"><span class="mono" data-content="certificates.modalLabel"></span><button type="button" class="certificate-modal-close" data-certificate-close data-content-attr="aria-label.certificates.close" aria-label="">×</button></div>
+        <div class="certificate-modal-body">
+          <div class="certificate-modal-preview" data-certificate-preview></div>
+          <div class="certificate-modal-details"><p class="certificate-issuer mono" data-certificate-issuer></p><h2 id="certificate-modal-title" data-certificate-title></h2><p data-certificate-description></p><dl class="certificate-meta mono"><div><dt data-content="certificates.issued"></dt><dd data-certificate-date></dd></div><div><dt data-content="certificates.credentialId"></dt><dd data-certificate-id></dd></div></dl><a class="certificate-modal-source" data-certificate-source target="_blank" rel="noreferrer"><span data-content="certificates.openCredential"></span><span>↗</span></a></div>
+        </div>
+      </div>
+    </div>
 
     <section id="contact" class="contact page-grid">
       <div class="section-index mono" data-content="contact.index"></div>

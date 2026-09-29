@@ -76,6 +76,17 @@
   }
 
   const workList = document.querySelector('[data-github-work]');
+  const certificateList = document.querySelector('[data-certificates]');
+  const certificateModal = document.querySelector('[data-certificate-modal]');
+  const certificatePreview = document.querySelector('[data-certificate-preview]');
+  const certificateModalTitle = document.querySelector('[data-certificate-title]');
+  const certificateModalIssuer = document.querySelector('[data-certificate-issuer]');
+  const certificateModalDescription = document.querySelector('[data-certificate-description]');
+  const certificateModalDate = document.querySelector('[data-certificate-date]');
+  const certificateModalId = document.querySelector('[data-certificate-id]');
+  const certificateModalSource = document.querySelector('[data-certificate-source]');
+  let certificateItems = [];
+  let lastCertificateTrigger = null;
   const githubUser = 'DX4GREY';
 
   const escapeHtml = (value = '') => String(value).replace(/[&<>"']/g, char => ({
@@ -194,9 +205,98 @@
     }
   };
 
+  const renderCertificates = certificates => {
+    if (!certificateList) return;
+    certificateItems = certificates;
+    certificateList.innerHTML = certificates.map((certificate, index) => {
+      const number = String(index + 1).padStart(2, '0');
+      const date = formatDate(certificate.date);
+      const previewSource = certificate.image || certificate.pdf;
+      const isPdf = !certificate.image && (certificate.type === 'pdf' || /\.pdf(?:[?#]|$)/i.test(previewSource));
+      const visual = isPdf
+        ? `<iframe class="certificate-pdf-thumb" src="${escapeHtml(previewSource)}#toolbar=0&navpanes=0&scrollbar=0" title="${escapeHtml(certificate.title)} PDF preview" tabindex="-1"></iframe>`
+        : `<img src="${escapeHtml(previewSource)}" alt="${escapeHtml(certificate.title)} certificate" loading="lazy" decoding="async">`;
+      return `<article class="certificate reveal" data-certificate-index="${index}">
+        <a class="certificate-image" href="${escapeHtml(previewSource)}" target="_blank" rel="noreferrer" aria-label="${escapeHtml(certificate.title)}" data-certificate-index="${index}">
+          ${visual}
+          <span class="certificate-image-label mono">${uiContent.certificates.viewCredential}</span>
+        </a>
+        <div class="certificate-caption">
+          <div class="certificate-number mono">${number}</div>
+          <div class="certificate-copy">
+            <p class="certificate-issuer mono">${escapeHtml(certificate.issuer)}</p>
+            <h3>${escapeHtml(certificate.title)}</h3>
+            <p>${escapeHtml(certificate.description)}</p>
+            <dl class="certificate-meta mono"><div><dt>${uiContent.certificates.issued}</dt><dd>${escapeHtml(date)}</dd></div><div><dt>${uiContent.certificates.credentialId}</dt><dd>${escapeHtml(certificate.credentialId)}</dd></div></dl>
+          </div>
+          <a class="certificate-link" href="${escapeHtml(certificate.url || certificate.pdf || certificate.image)}" ${certificate.url?.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''} aria-label="${uiContent.certificates.viewCredential}" data-certificate-index="${index}">↗</a>
+        </div>
+      </article>`;
+    }).join('');
+    certificateList.querySelectorAll('.reveal').forEach((element, index) => {
+      element.style.transitionDelay = `${Math.min(index % 5, 4) * 70}ms`;
+      if (!reduceMotion) requestAnimationFrame(() => element.classList.add('is-visible'));
+      else element.classList.add('is-visible');
+    });
+  };
+
+  const openCertificateModal = (certificate, trigger) => {
+    if (!certificateModal) return;
+    const previewSource = certificate.image || certificate.pdf;
+    const isPdf = !certificate.image && (certificate.type === 'pdf' || /\.pdf(?:[?#]|$)/i.test(previewSource));
+    certificatePreview.innerHTML = isPdf
+      ? `<iframe src="${escapeHtml(previewSource)}" title="${escapeHtml(certificate.title)} PDF preview"></iframe>`
+      : `<img src="${escapeHtml(previewSource)}" alt="${escapeHtml(certificate.title)} certificate">`;
+    certificateModalTitle.textContent = certificate.title || '';
+    certificateModalIssuer.textContent = certificate.issuer || '';
+    certificateModalDescription.textContent = certificate.description || '';
+    certificateModalDate.textContent = certificate.date ? formatDate(certificate.date) : '—';
+    certificateModalId.textContent = certificate.credentialId || '—';
+    certificateModalSource.href = certificate.url || certificate.pdf || certificate.image;
+    certificateModal.classList.add('is-open');
+    certificateModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('certificate-modal-open');
+    lastCertificateTrigger = trigger;
+    certificateModal.querySelector('.certificate-modal-close')?.focus();
+  };
+
+  const closeCertificateModal = () => {
+    if (!certificateModal?.classList.contains('is-open')) return;
+    certificateModal.classList.remove('is-open');
+    certificateModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('certificate-modal-open');
+    certificatePreview.innerHTML = '';
+    lastCertificateTrigger?.focus({ preventScroll: true });
+  };
+
+  certificateList?.addEventListener('click', event => {
+    const trigger = event.target.closest('[data-certificate-index]');
+    if (!trigger) return;
+    event.preventDefault();
+    const certificate = certificateItems[Number(trigger.dataset.certificateIndex)];
+    if (certificate) openCertificateModal(certificate, trigger);
+  });
+  certificateModal?.querySelectorAll('[data-certificate-close]').forEach(element => element.addEventListener('click', closeCertificateModal));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') closeCertificateModal();
+  });
+
+  const loadCertificates = async () => {
+    if (!certificateList) return;
+    try {
+      const response = await fetch('certificates.json', { cache: 'no-store' });
+      if (!response.ok) throw new Error('Certificates file unavailable');
+      const certificates = await response.json();
+      if (!Array.isArray(certificates) || !certificates.length) throw new Error('No certificates found');
+      renderCertificates(certificates);
+    } catch (error) {
+      certificateList.innerHTML = `<p class="work-loading mono">${uiContent.certificates.error || 'UNABLE TO LOAD CERTIFICATES.'}</p>`;
+    }
+  };
+
   loadContent().then(() => {
     runIntro();
-    return loadGithubWork();
+    return Promise.all([loadGithubWork(), loadCertificates()]);
   }).catch(() => {
     dismissIntro();
     if (workList) workList.innerHTML = '<p class="work-loading mono">CONTENT FILE UNAVAILABLE.</p>';
@@ -273,7 +373,7 @@
     '.wordmark', '.nav nav', '.hero-top > *', '.hero-center > *', '.hero-bottom > *',
     '.section-index', '.about-grid > *', '.github-profile > *', '.about-copy > *',
     '.expertise-head > *', '.skill', '.skill > *', '.work-title', '.work-meta > *',
-    '.project-caption > *', '.contact-inner > *', '.contact-links .email', '.contact-foot > *',
+    '.project-caption > *', '.certificate-caption > *, .certificate-image', '.contact-inner > *', '.contact-links .email', '.contact-foot > *',
     'footer > *'
   ];
   document.querySelectorAll(motionSelectors.join(',')).forEach((element, index) => {
