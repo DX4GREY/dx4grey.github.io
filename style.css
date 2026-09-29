@@ -85,6 +85,37 @@ footer{padding:20px var(--page-pad);display:flex;justify-content:space-between;g
 }
 @media(prefers-reduced-motion:reduce){.drawer-backdrop,.nav nav{transition:none}}
 
+/* --- Hero glitch showpiece --- */
+.hero-kicker.glitch-target,.hero-title.glitch-target{isolation:isolate;will-change:transform,filter}
+.hero-title.glitch-target{animation:hero-heading-float 7s ease-in-out infinite alternate,hero-heading-glitch 9s steps(1,end) infinite}
+.hero-kicker.glitch-target{animation:hero-kicker-float 8s ease-in-out infinite alternate,hero-kicker-glitch 11s steps(1,end) infinite}
+.hero-title .glitch-main,.hero-kicker .glitch-main{position:relative;will-change:transform,filter}
+.hero-title .glitch-main:before,.hero-kicker .glitch-main:before{content:"";position:absolute;z-index:-1;inset:-4% -2%;background:repeating-linear-gradient(0deg,transparent 0 8px,rgba(10,10,10,.14) 9px 10px,transparent 11px 17px);mix-blend-mode:multiply;opacity:.12;pointer-events:none;animation:scanline-sweep 4.5s linear infinite}
+.hero-title .glitch-main:after,.hero-kicker .glitch-main:after{inset:-2%;background:linear-gradient(90deg,transparent 0 12%,rgba(215,189,130,.25) 13% 14%,transparent 15% 82%,rgba(10,10,10,.15) 83% 84%,transparent 85%);mix-blend-mode:screen;opacity:.16;animation:signal-sweep 6s ease-in-out infinite}
+.hero-title .glitch-red,.hero-title .glitch-cyan,.hero-title .glitch-green,.hero-kicker .glitch-red,.hero-kicker .glitch-cyan,.hero-kicker .glitch-green{opacity:0;filter:blur(.15px);will-change:transform,clip-path,opacity}
+.hero-title .glitch-red,.hero-kicker .glitch-red{animation:rgb-red-burst 9s steps(1,end) infinite}
+.hero-title .glitch-cyan,.hero-kicker .glitch-cyan{animation:rgb-cyan-burst 9s steps(1,end) infinite -.12s}
+.hero-title .glitch-green,.hero-kicker .glitch-green{animation:rgb-green-burst 9s steps(1,end) infinite -.24s}
+.hero-title:hover,.hero-kicker:hover{filter:contrast(1.08) saturate(1.18);animation:hero-hover-shake .42s steps(2,end) infinite!important}
+.hero-title:hover .glitch-main,.hero-kicker:hover .glitch-main{filter:drop-shadow(3px 0 rgba(255,23,68,.35)) drop-shadow(-3px 0 rgba(0,217,255,.35))}
+.hero-title:hover .glitch-red,.hero-kicker:hover .glitch-red{opacity:.8;transform:translate(8px,-1px);clip-path:inset(8% 0 72% 0);animation:hero-hover-red .3s steps(2,end) infinite}
+.hero-title:hover .glitch-cyan,.hero-kicker:hover .glitch-cyan{opacity:.8;transform:translate(-8px,1px);clip-path:inset(58% 0 20% 0);animation:hero-hover-cyan .27s steps(2,end) infinite}
+.hero-title:hover .glitch-green,.hero-kicker:hover .glitch-green{opacity:.5;transform:translate(4px);clip-path:inset(30% 0 45% 0);animation:hero-hover-green .22s steps(2,end) infinite}
+@keyframes hero-heading-float{0%,100%{transform:translate3d(0,0,0) skewX(0);text-shadow:3px 3px 0 rgba(183,154,99,.22),0 18px 30px rgba(10,10,10,.08)}50%{transform:translate3d(0,-4px,0) skewX(-.35deg);text-shadow:5px 5px 0 rgba(183,154,99,.2),0 24px 38px rgba(10,10,10,.12)}}
+@keyframes hero-kicker-float{0%,100%{transform:translate3d(0,0,0)}50%{transform:translate3d(4px,-5px,0) skewX(-.3deg)}}
+@keyframes hero-heading-glitch{0%,76%,100%{clip-path:inset(0)}78%{clip-path:inset(9% 0 70% 0);transform:translate(-2px,1px)}79%{clip-path:inset(58% 0 14% 0);transform:translate(3px,-1px)}80%{clip-path:inset(0);transform:none}}
+@keyframes hero-kicker-glitch{0%,82%,100%{clip-path:inset(0)}84%{clip-path:inset(12% 0 64% 0);transform:translate(2px)}85%{clip-path:inset(62% 0 9% 0);transform:translate(-3px)}86%{clip-path:inset(0);transform:none}}
+@keyframes rgb-red-burst{0%,76%,100%{opacity:0;transform:none;clip-path:inset(0)}78%{opacity:.72;transform:translate(7px,-1px);clip-path:inset(8% 0 70% 0)}80%{opacity:.38;transform:translate(-4px,1px);clip-path:inset(59% 0 18% 0)}82%{opacity:0}}
+@keyframes rgb-cyan-burst{0%,77%,100%{opacity:0;transform:none;clip-path:inset(0)}79%{opacity:.72;transform:translate(-7px,1px);clip-path:inset(40% 0 40% 0)}81%{opacity:.38;transform:translate(4px,-1px);clip-path:inset(76% 0 5% 0)}83%{opacity:0}}
+@keyframes rgb-green-burst{0%,78%,100%{opacity:0;transform:none;clip-path:inset(0)}80%{opacity:.52;transform:translate(3px);clip-path:inset(20% 0 57% 0)}82%{opacity:.24;transform:translate(-3px);clip-path:inset(68% 0 12% 0)}84%{opacity:0}}
+@keyframes scanline-sweep{0%,20%{transform:translateY(-40%);opacity:0}35%{opacity:.6}70%,100%{transform:translateY(40%);opacity:0}}
+@keyframes signal-sweep{0%,20%{transform:translateX(-35%);opacity:0}40%{opacity:.42}75%,100%{transform:translateX(35%);opacity:0}}
+@keyframes hero-hover-shake{0%,100%{transform:translate(0)}25%{transform:translate(-2px,1px) skewX(-.7deg)}50%{transform:translate(2px,-1px) skewX(.7deg)}75%{transform:translate(-1px)}}
+@keyframes hero-hover-red{50%{transform:translate(11px,-2px)}}
+@keyframes hero-hover-cyan{50%{transform:translate(-11px,2px)}}
+@keyframes hero-hover-green{50%{transform:translate(5px)}}
+@media(prefers-reduced-motion:reduce){.hero-title.glitch-target,.hero-kicker.glitch-target,.hero-title .glitch-main:before,.hero-kicker .glitch-main:before,.hero-title .glitch-main:after,.hero-kicker .glitch-main:after,.hero-title .glitch-red,.hero-title .glitch-cyan,.hero-title .glitch-green,.hero-kicker .glitch-red,.hero-kicker .glitch-cyan,.hero-kicker .glitch-green{animation:none}.hero-title:hover,.hero-kicker:hover{animation:none}.hero-title:hover .glitch-red,.hero-kicker:hover .glitch-red,.hero-title:hover .glitch-cyan,.hero-kicker:hover .glitch-cyan,.hero-title:hover .glitch-green,.hero-kicker:hover .glitch-green{animation:none;transform:none}}
+
 /* --- Motion polish --- */
 ::selection{background:var(--cream);color:var(--ink)}
 .nav{backdrop-filter:blur(12px);transition:box-shadow .35s ease,background-color .35s ease}
@@ -290,3 +321,37 @@ h1,h2,h3,.giant{animation:heading-breathe 6s ease-in-out infinite alternate}
   .hero-top>span,.hero-note,.work-meta>span,.contact-foot>span,footer>span,.copy-columns p,.expertise-head p,.github-meta span,.contact-inner>p,.contact-foot,.drawer-head .mono{animation:none}
   .hero-sub span,.facts>div,.github-meta span,.project-updated,footer a,.drawer-close,.menu{transition:none}
 }
+
+/* RGB channels stay alive between glitch bursts instead of looking static. */
+.hero-title .glitch-red,.hero-kicker .glitch-red{animation:rgb-red-live 5.8s steps(1,end) infinite}
+.hero-title .glitch-cyan,.hero-kicker .glitch-cyan{animation:rgb-cyan-live 6.35s steps(1,end) infinite -.9s}
+.hero-title .glitch-green,.hero-kicker .glitch-green{animation:rgb-green-live 7.1s steps(1,end) infinite -1.7s}
+@keyframes rgb-red-live{0%,64%,100%{opacity:.045;transform:translate(1px,0);clip-path:inset(0)}66%{opacity:.18;transform:translate(3px,-1px);clip-path:inset(12% 0 68% 0)}68%{opacity:.72;transform:translate(8px,-1px) skewX(-2deg);clip-path:inset(8% 0 70% 0)}70%{opacity:.22;transform:translate(-4px,1px);clip-path:inset(56% 0 22% 0)}72%,100%{opacity:.045;transform:translate(1px,0);clip-path:inset(0)}}
+@keyframes rgb-cyan-live{0%,67%,100%{opacity:.045;transform:translate(-1px,0);clip-path:inset(0)}69%{opacity:.2;transform:translate(-3px,1px);clip-path:inset(42% 0 38% 0)}71%{opacity:.7;transform:translate(-8px,1px) skewX(2deg);clip-path:inset(40% 0 40% 0)}73%{opacity:.2;transform:translate(4px,-1px);clip-path:inset(74% 0 7% 0)}75%,100%{opacity:.045;transform:translate(-1px,0);clip-path:inset(0)}}
+@keyframes rgb-green-live{0%,70%,100%{opacity:.025;transform:translate(0);clip-path:inset(0)}72%{opacity:.12;transform:translate(2px);clip-path:inset(20% 0 57% 0)}74%{opacity:.45;transform:translate(4px) skewX(-1deg);clip-path:inset(66% 0 15% 0)}76%{opacity:.12;transform:translate(-2px);clip-path:inset(30% 0 42% 0)}78%,100%{opacity:.025;transform:translate(0);clip-path:inset(0)}}
+@media(prefers-reduced-motion:reduce){.hero-title .glitch-red,.hero-title .glitch-cyan,.hero-title .glitch-green,.hero-kicker .glitch-red,.hero-kicker .glitch-cyan,.hero-kicker .glitch-green{animation:none}}
+
+.hero-title:hover .glitch-red,.hero-kicker:hover .glitch-red{animation:rgb-hover-red .24s steps(2,end) infinite!important}
+.hero-title:hover .glitch-cyan,.hero-kicker:hover .glitch-cyan{animation:rgb-hover-cyan .2s steps(2,end) infinite!important}
+.hero-title:hover .glitch-green,.hero-kicker:hover .glitch-green{animation:rgb-hover-green .17s steps(2,end) infinite!important}
+@keyframes rgb-hover-red{0%,100%{opacity:.45;transform:translate(6px,-1px);clip-path:inset(8% 0 72% 0)}35%{opacity:.95;transform:translate(12px,1px) skewX(-3deg);clip-path:inset(42% 0 36% 0)}70%{opacity:.62;transform:translate(4px,-2px);clip-path:inset(73% 0 5% 0)}}
+@keyframes rgb-hover-cyan{0%,100%{opacity:.45;transform:translate(-6px,1px);clip-path:inset(58% 0 20% 0)}40%{opacity:.95;transform:translate(-12px,-1px) skewX(3deg);clip-path:inset(12% 0 64% 0)}75%{opacity:.58;transform:translate(-4px,2px);clip-path:inset(78% 0 3% 0)}}
+@keyframes rgb-hover-green{0%,100%{opacity:.3;transform:translate(3px);clip-path:inset(30% 0 45% 0)}45%{opacity:.7;transform:translate(7px,-1px) skewX(-2deg);clip-path:inset(66% 0 14% 0)}80%{opacity:.38;transform:translate(1px,1px);clip-path:inset(6% 0 78% 0)}}
+@media(prefers-reduced-motion:reduce){.hero-title:hover .glitch-red,.hero-title:hover .glitch-cyan,.hero-title:hover .glitch-green,.hero-kicker:hover .glitch-red,.hero-kicker:hover .glitch-cyan,.hero-kicker:hover .glitch-green{animation:none!important;transform:none;clip-path:none}}
+
+/* Longer hover cycles add pauses, micro-flickers and irregular bursts. */
+.hero-title:hover,.hero-kicker:hover{animation:hero-hover-chaos 3.7s steps(1,end) infinite!important}
+.hero-title:hover .glitch-main,.hero-kicker:hover .glitch-main{animation:hover-main-flicker 3.1s steps(1,end) infinite}
+.hero-title:hover .glitch-main:before,.hero-kicker:hover .glitch-main:before{animation:hover-scan-jump 2.8s steps(1,end) infinite}
+.hero-title:hover .glitch-main:after,.hero-kicker:hover .glitch-main:after{animation:hover-signal-jump 4.2s steps(1,end) infinite}
+.hero-title:hover .glitch-red,.hero-kicker:hover .glitch-red{animation:rgb-hover-red-var 1.83s steps(1,end) infinite!important}
+.hero-title:hover .glitch-cyan,.hero-kicker:hover .glitch-cyan{animation:rgb-hover-cyan-var 2.47s steps(1,end) infinite -.63s!important}
+.hero-title:hover .glitch-green,.hero-kicker:hover .glitch-green{animation:rgb-hover-green-var 3.19s steps(1,end) infinite -1.14s!important}
+@keyframes hero-hover-chaos{0%,18%,100%{transform:translate(0);filter:contrast(1.08) saturate(1.18)}20%{transform:translate(-2px,1px) skewX(-.5deg)}22%{transform:translate(3px,-1px)}24%{transform:translate(0)}47%{transform:translate(1px,0)}49%{transform:translate(-4px,2px) skewX(1deg);filter:contrast(1.3) saturate(1.4)}51%{transform:translate(2px,-2px)}53%{transform:translate(0);filter:contrast(1.08) saturate(1.18)}76%{transform:translate(0)}78%{transform:translate(5px,0) skewX(-1.4deg)}80%{transform:translate(-3px,1px)}82%{transform:translate(0)}}
+@keyframes hover-main-flicker{0%,16%,100%{filter:none}18%{filter:drop-shadow(4px 0 rgba(255,23,68,.4)) drop-shadow(-4px 0 rgba(0,217,255,.4))}20%{filter:none}47%{filter:brightness(1.2)}49%{filter:drop-shadow(-6px 0 rgba(0,217,255,.5)) drop-shadow(5px 0 rgba(255,23,68,.45))}52%{filter:none}78%{filter:brightness(.85) contrast(1.5)}81%{filter:none}}
+@keyframes hover-scan-jump{0%,30%,100%{opacity:.12;transform:translateY(-40%)}35%{opacity:.7;transform:translateY(8%)}39%{opacity:.18;transform:translateY(42%)}62%{opacity:.12;transform:translateY(-22%)}66%{opacity:.8;transform:translateY(30%)}70%{opacity:.12;transform:translateY(42%)}}
+@keyframes hover-signal-jump{0%,22%,100%{opacity:.16;transform:translateX(-35%)}27%{opacity:.65;transform:translateX(8%)}31%{opacity:.12;transform:translateX(34%)}54%{opacity:.16;transform:translateX(30%)}58%{opacity:.7;transform:translateX(-8%)}62%{opacity:.12;transform:translateX(-35%)}}
+@keyframes rgb-hover-red-var{0%,12%,100%{opacity:.36;transform:translate(5px,-1px);clip-path:inset(8% 0 72% 0)}16%{opacity:.9;transform:translate(13px,1px) skewX(-3deg);clip-path:inset(42% 0 36% 0)}21%{opacity:.18;transform:translate(-2px);clip-path:inset(75% 0 3% 0)}48%{opacity:.62;transform:translate(7px,-2px);clip-path:inset(18% 0 64% 0)}53%{opacity:.9;transform:translate(15px,2px);clip-path:inset(61% 0 12% 0)}58%{opacity:.12;transform:translate(0);clip-path:inset(0)}82%{opacity:.48;transform:translate(4px);clip-path:inset(30% 0 44% 0)}}
+@keyframes rgb-hover-cyan-var{0%,18%,100%{opacity:.34;transform:translate(-5px,1px);clip-path:inset(58% 0 20% 0)}23%{opacity:.92;transform:translate(-14px,-1px) skewX(3deg);clip-path:inset(12% 0 64% 0)}29%{opacity:.12;transform:translate(0);clip-path:inset(0)}57%{opacity:.7;transform:translate(-7px,2px);clip-path:inset(74% 0 7% 0)}63%{opacity:.88;transform:translate(-12px,-2px);clip-path:inset(35% 0 43% 0)}69%{opacity:.16;transform:translate(2px);clip-path:inset(0)}88%{opacity:.5;transform:translate(-4px,1px);clip-path:inset(6% 0 78% 0)}}
+@keyframes rgb-hover-green-var{0%,24%,100%{opacity:.24;transform:translate(3px);clip-path:inset(30% 0 45% 0)}30%{opacity:.74;transform:translate(8px,-1px) skewX(-2deg);clip-path:inset(66% 0 14% 0)}36%{opacity:.08;transform:translate(0);clip-path:inset(0)}66%{opacity:.55;transform:translate(5px,1px);clip-path:inset(6% 0 78% 0)}72%{opacity:.82;transform:translate(9px,-2px);clip-path:inset(48% 0 28% 0)}78%{opacity:.1;transform:translate(-1px);clip-path:inset(0)}}
+@media(prefers-reduced-motion:reduce){.hero-title:hover,.hero-kicker:hover,.hero-title:hover .glitch-main,.hero-kicker:hover .glitch-main,.hero-title:hover .glitch-main:before,.hero-kicker:hover .glitch-main:before,.hero-title:hover .glitch-main:after,.hero-kicker:hover .glitch-main:after,.hero-title:hover .glitch-red,.hero-kicker:hover .glitch-red,.hero-title:hover .glitch-cyan,.hero-kicker:hover .glitch-cyan,.hero-title:hover .glitch-green,.hero-kicker:hover .glitch-green{animation:none!important}}
