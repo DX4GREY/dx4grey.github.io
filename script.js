@@ -113,6 +113,8 @@
     document.querySelectorAll('.marquee [data-content]').forEach(element => {
       element.textContent += ' ';
     });
+    if (menu) menu.setAttribute('aria-label', menu.getAttribute('aria-expanded') === 'true' ? uiContent.nav.close : uiContent.nav.open);
+    if (nav) nav.setAttribute('aria-hidden', window.innerWidth <= 800 ? String(!nav.classList.contains('open')) : 'false');
     document.querySelectorAll('.glitch-target').forEach(element => {
       const text = element.textContent.trim();
       if (!text || element.dataset.glitchReady) return;
@@ -349,7 +351,7 @@
       nav.classList.toggle('open', open);
       document.body.classList.toggle('drawer-open', open);
       menu.setAttribute('aria-expanded', String(open));
-      menu.setAttribute('aria-label', open ? uiContent?.nav.close : uiContent?.nav.open);
+      menu.setAttribute('aria-label', open ? (uiContent?.nav.close || 'Close menu') : (uiContent?.nav.open || 'Open menu'));
       nav.setAttribute('aria-hidden', window.innerWidth <= 800 ? String(!open) : 'false');
       if (open) {
         const firstLink = nav.querySelector('a');
@@ -370,7 +372,7 @@
   }
 
   const motionSelectors = [
-    '.wordmark', '.nav nav', '.hero-top > *', '.hero-center > *', '.hero-bottom > *',
+    '.wordmark', '.hero-top > *', '.hero-center > *', '.hero-bottom > *',
     '.section-index', '.about-grid > *', '.github-profile > *', '.about-copy > *',
     '.expertise-head > *', '.skill', '.skill > *', '.work-title', '.work-meta > *',
     '.project-caption > *', '.certificate-caption > *, .certificate-image', '.contact-inner > *', '.contact-links .email', '.contact-foot > *',
